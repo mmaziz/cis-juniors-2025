@@ -7,82 +7,82 @@
     <style>
         body {
             display: flex;
-            flex-direction: column; /* Changed to column to stack elements vertically */
-            justify-content: center;
-            align-items: center;
+            flex-direction: column; /* To stack elements vertically */
+            align-items: center; /* To center items horizontally */
             min-height: 100vh;
             margin: 0;
-            background-color: #f0f2f5;
+            background-color: #f0f2f5; /* Light grey background for the whole page */
             font-family: Arial, sans-serif;
-            padding: 20px; /* Added some padding */
-            box-sizing: border-box; /* Include padding in element's total width and height */
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Container for the logo and headings */
+        .header-section {
+            background-color: white; /* White background for this section */
+            padding: 30px 20px; /* More padding top/bottom */
+            border-radius: 15px; /* Rounded corners for the white box */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            margin-bottom: 25px; /* Space between header box and thermometer */
+            width: 100%; /* Take full width within body padding */
+            max-width: 600px; /* Limit width on larger screens */
+            display: flex; /* Use flexbox for internal centering */
+            flex-direction: column;
+            align-items: center; /* Center content within this box */
         }
 
         /* Styling for the logo image */
         .logo {
-            max-width: 250px; /* Adjust as needed */
+            max-width: 200px; /* Slightly smaller logo */
             height: auto;
             margin-bottom: 15px; /* Space between logo and first heading */
         }
 
         h1 {
             color: #ff8c00; /* Orange color */
-            font-size: 2.8em; /* Made bigger */
+            font-size: 2.8em; /* Bigger text */
             margin: 5px 0; /* Adjust margin for spacing */
             text-align: center;
         }
 
         h2 {
             color: #ff8c00; /* Orange color */
-            font-size: 1.8em; /* Made bigger */
-            margin: 5px 0 20px 0; /* Adjust margin for spacing, more space below h2 */
+            font-size: 1.8em; /* Bigger text */
+            margin: 5px 0; /* Adjust margin for spacing - reduced from 20px */
             text-align: center;
         }
 
-        /* --- CSS to attempt to hide or modify branding --- */
+        /* --- CSS to attempt to hide or modify branding within the thermometer --- */
+        /* You still need to inspect the thermometer's internal structure to make these effective. */
 
-        /* General attempt to target text elements within the SVG */
-        /* This might affect other text too, so be cautious */
         #fundraising-thermometer-213 text {
-            /* Example: Make text smaller */
-            font-size: 0.7em !important; /* Adjust value as needed */
-            /* Example: Change text color to white */
-            fill: white !important; /* For SVG text elements */
-            color: white !important; /* For potential HTML text elements within SVG's foreignObject */
+            font-size: 0.7em !important;
+            fill: white !important;
+            color: white !important;
         }
 
-        /* Attempt to hide specific elements if they have a recognizable class/ID */
-        /* You might need to inspect the live element in your browser's developer tools */
-        /* For example, if the "powered by" text is in a <text> element with class "powered-by-text" */
-        #fundraising-thermometer-213 .powered-by-text {
-            display: none !important; /* To completely hide */
-            /* Or to change color/size */
-            /* font-size: 0.6em !important; */
-            /* fill: white !important; */
-        }
-
-        /* Attempt to hide an image element for a logo */
-        /* If the logo is an <image> element within the SVG */
-        #fundraising-thermometer-213 image {
-            display: none !important; /* To completely hide */
-            /* Or to make it smaller if you know its ID/class */
-            /* width: 20px !important; */
-            /* height: auto !important; */
-        }
-
-        /* If the branding is within a specific group <g> element */
-        #fundraising-thermometer-213 .branding-group { /* Replace 'branding-group' with actual class/ID */
+        #fundraising-thermometer-213 .powered-by-text,
+        #fundraising-thermometer-213 image,
+        #fundraising-thermometer-213 .branding-group {
             display: none !important;
         }
 
-        /* --- End of custom CSS --- */
+        /* Ensure the SVG thermometer itself scales and centers */
+        #fundraising-thermometer-213 {
+            max-width: 100%; /* Make sure it doesn't overflow */
+            height: auto; /* Maintain aspect ratio */
+            display: block; /* Remove extra space below inline elements */
+        }
 
     </style>
 </head>
 <body>
-    <img src="CIS LOGO.jpg" alt="CIS Logo" class="logo" onerror="this.onerror=null;this.src='https://placehold.co/250x100/CCCCCC/333333?text=CIS+Logo';" />
-    <h1>CIS Donation Tracker</h1>
-    <h2>Juniors Camp 2025</h2>
+    <div class="header-section">
+        <img src="CIS LOGO.jpg" alt="CIS Logo" class="logo" onerror="this.onerror=null;this.src='https://placehold.co/200x80/CCCCCC/333333?text=CIS+Logo';" />
+        <h1>CIS Donation Tracker</h1>
+        <h2>Juniors Camp 2025</h2>
+    </div>
+
     <!-- Your thermometer snippet goes here -->
     <svg id="fundraising-thermometer-213" width="800" height="1050"></svg>
     <script>
